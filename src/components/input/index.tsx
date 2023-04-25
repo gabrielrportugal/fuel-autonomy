@@ -5,7 +5,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   placeholder: string;
-  register: UseFormRegister<FieldValues>;
+  register: UseFormRegister<FieldValues> | UseFormRegister<any>;
   defaultValue?: string;
   required?: boolean;
   errors?: FieldErrors<FieldValues>;
