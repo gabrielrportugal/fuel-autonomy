@@ -11,6 +11,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   errors?: FieldErrors<FieldValues>;
 }
 
+
 export const Input: FC<InputProps> = ({
   name, 
   label,
@@ -21,6 +22,7 @@ export const Input: FC<InputProps> = ({
   errors,
   ...rest
 }) => {
+
   return (
     <>
       <label className="text-gray-600 font-medium">{label}</label>
@@ -29,9 +31,14 @@ export const Input: FC<InputProps> = ({
         placeholder={placeholder}
         defaultValue={defaultValue}
         autoFocus
-        {...register(name, { required })}
+        {...register(name,  { required })}
         {...rest}
       />
+      {errors && errors[name]?.type === "required" && (
+        <div className="mb-3 text-normal text-red-500">
+          {`Este campo é obrigatório.`}
+        </div>
+      )}
       {errors && errors[name] && (
         <div className="mb-3 text-normal text-red-500">
           {`${errors[name]?.message}`}

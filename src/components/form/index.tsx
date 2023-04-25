@@ -2,9 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { Input } from '../input';
+import { Button } from '@material-tailwind/react'
 
 export const Form = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+  console.log('errors', errors);
 
    const onSubmit = async (data: any) => {
       console.log('data ->', data);
@@ -13,7 +16,7 @@ export const Form = () => {
   return (
     <>
       <form
-        className="w-full h-full max-w-lg m-auto py-10 mt-10 px-10 border"
+        className="w-full h-screenh max-w-lg m-auto py-10 mt-10 px-10"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div>
@@ -51,14 +54,13 @@ export const Form = () => {
             errors={errors}
           />
         </div>
-        
 
-        <button
-          className="mt-4 w-full bg-green-400 hover:bg-green-600 text-green-100 border shadow py-3 px-6 font-semibold text-md rounded"
+        <Button
+          className="mt-4 w-full bg-green-400 hover:bg-green-600 text-green-100 border shadow py-3 px-6 font-semibold text-sm rounded"
           type="submit"
         >
           Calcular
-        </button>
+        </Button>
       </form>
     </>
   );
